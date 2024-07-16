@@ -1,0 +1,2 @@
+<%= "#{current_user.username} #{current_user.email}"%>
+<%= button_to "logout", destroy_user_session_path, method: :delete%>

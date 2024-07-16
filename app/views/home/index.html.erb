@@ -1,2 +1,5 @@
-<%# titulo da nav-bar %>
-<%  @title = "Ciência da Computação: 6° Período"  %>
+<%= render "public/nav_bar", title: "Ciência da Computação: 6° Período" %> 
+
+<%= month_calendar do |date| %>
+  <%= date %>
+<%end%>

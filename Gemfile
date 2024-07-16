@@ -34,6 +34,7 @@ gem "jbuilder"
 
 # Gerenciar sign_in e sign_up
 gem "devise"
+gem 'devise-i18n'
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
@@ -46,6 +47,9 @@ gem "bootsnap", require: false
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
+
+# I18n
+gem 'rails-i18n', '~> 7.0.0' # For 7.0.0
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -68,3 +72,9 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem "simple_calendar", "~> 3.0"
+
+gem "sassc-rails", "~> 2.1"
+
+gem "simple_form", "~> 5.3"

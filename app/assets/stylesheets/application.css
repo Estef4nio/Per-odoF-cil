@@ -64,3 +64,27 @@
   color: #f0f1f5;
   text-decoration: none;
 }
+
+/* Home style */
+
+.content-container {
+  display: flex;
+  height: 93vh;
+  width: 100vw;
+  flex-direction: column;
+}
+
+.container {
+  font-size: 20px;
+  display: flex;
+  width: 100%;
+  padding-left: 4.5rem;
+}
+
+.upper {
+  height: 55%;
+}
+
+.bottom {
+  height: 45%;
+}

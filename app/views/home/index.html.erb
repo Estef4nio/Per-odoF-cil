@@ -1,5 +1,13 @@
 <%= render "public/nav_bar", title: "Ciência da Computação: 6° Período" %> 
-
-<%= month_calendar do |date| %>
-  <%= date %>
-<%end%>
+<div class="content-container">
+  <div class="container upper">
+    <h1 id="titulo">Matérias</h1>
+  </div>
+  <div class="container bottom">
+    <div class="calendario">
+      <%= month_calendar do |date| %>
+        <%= date %>
+      <% end %>
+    </div>
+  </div>
+</div>

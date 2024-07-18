@@ -78,3 +78,5 @@ gem "simple_calendar", "~> 3.0"
 gem "sassc-rails", "~> 2.1"
 
 gem "simple_form", "~> 5.3"
+
+gem "responders", "~> 3.1"

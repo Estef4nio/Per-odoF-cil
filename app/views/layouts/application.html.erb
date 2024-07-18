@@ -11,6 +11,7 @@
   </head>
 
   <body>
+    <%= render "public/nav_bar"  if user_signed_in?%>
     <%= yield %>
   </body>
 </html>

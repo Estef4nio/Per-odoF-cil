@@ -1,7 +1,25 @@
-<%= render "public/nav_bar", title: "Ciência da Computação: 6° Período" %> 
+<%= content_for :title do %>
+  <% if current_user.periodo %>
+    <%= link_to "Ciência da Computação: #{current_user.periodo.nome}", edit_periodo_path(current_user.periodo) %>
+  <% else %>
+    <%= link_to "Iniciar um Periodo", new_periodo_path %>
+  <% end %>
+<% end %>
 <div class="content-container">
   <div class="container upper">
-    <h1 id="titulo">Matérias</h1>
+    <div class="upper-left">
+      <h1 id="titulo-disciplinas">Disciplinas</h1>
+      <div class="card-wrapper">
+        <% if @disciplinas %>
+          <% @disciplinas.each do |disciplina| %>
+            <div class="card-disciplina">
+              <%= disciplina.nome %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div class="upper-rigth"></div>
   </div>
   <div class="container bottom">
     <div class="calendario">

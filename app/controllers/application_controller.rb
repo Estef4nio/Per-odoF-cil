@@ -1,6 +1,18 @@
+require "application_responder"
+
 class ApplicationController < ActionController::Base
+  self.responder = ApplicationResponder
+  respond_to :html, :http_cache
+
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
+
+  def periodo_present?
+    if not current_user.periodo 
+      session[:to] = "disciplina"
+      redirect_to new_periodo_path
+    end
+  end
 
   protected
 

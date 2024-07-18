@@ -11,4 +11,5 @@ Rails.application.routes.draw do
 
   resources :periodos
   resources :disciplinas
+  resources :avaliacaos
 end

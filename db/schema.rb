@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_17_212440) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_18_193401) do
+  create_table "avaliacaos", force: :cascade do |t|
+    t.string "nome"
+    t.text "descricao"
+    t.float "nota"
+    t.integer "peso"
+    t.date "data"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "disciplina_id"
+    t.index ["disciplina_id"], name: "index_avaliacaos_on_disciplina_id"
+  end
+
   create_table "disciplinas", force: :cascade do |t|
     t.string "nome", null: false
     t.integer "carga_horaria", null: false
@@ -44,6 +56,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_17_212440) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "avaliacaos", "disciplinas"
   add_foreign_key "disciplinas", "periodos"
   add_foreign_key "users", "periodos"
 end

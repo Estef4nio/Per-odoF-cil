@@ -23,8 +23,11 @@
   </div>
   <div class="container bottom">
     <div class="calendario">
-      <%= month_calendar do |date| %>
+      <%= month_calendar(events: @avaliacaos) do |date, avaliacaos| %>
         <%= date %>
+        <% avaliacaos.each do |avaliacao| %>
+          <div><%= avaliacao.nome %></div>
+        <% end %>
       <% end %>
     </div>
   </div>

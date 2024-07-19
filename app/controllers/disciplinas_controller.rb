@@ -16,7 +16,7 @@ class DisciplinasController < ApplicationController
   end
 
   def update
-    @discplina.update(params_discplina)
+    @disciplina.update(params_disciplina)
     respond_with(@disciplina, location: root_path)
   end
 
@@ -27,11 +27,11 @@ class DisciplinasController < ApplicationController
 
   private
 
-  def params_discplina
+  def params_disciplina
     params.require(:disciplina).permit(:nome, :carga_horaria, :creditos, :faltas)
   end
 
   def set_disciplina
-    @disciplinas = Discplina.find_by(id: params[:id])
+    @disciplina = Disciplina.find_by(id: params[:id])
   end
 end

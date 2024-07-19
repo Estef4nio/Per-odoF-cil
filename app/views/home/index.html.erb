@@ -13,7 +13,9 @@
         <% if @disciplinas %>
           <% @disciplinas.each do |disciplina| %>
             <div class="card-disciplina">
-              <%= disciplina.nome %>
+              <%= link_to disciplina.nome, edit_disciplina_path(:id => disciplina.id), class: "nav-link" %>
+              <p>Faltas: <%= disciplina.faltas %></p>
+              <p>Média: <%= disciplina.get_media %></p>
             </div>
           <% end %>
         <% end %>

@@ -12,7 +12,7 @@ class Disciplina < ApplicationRecord
     @media.round(2)
   end
   
-  
+  serialize :topics, JSON
   validates :nome, presence: true
   validates :carga_horaria, presence: true
   validates :creditos, presence: true

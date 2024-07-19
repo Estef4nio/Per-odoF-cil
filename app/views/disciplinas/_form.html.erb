@@ -3,5 +3,16 @@
   <%= f.input :carga_horaria%>
   <%= f.input :creditos%>
   <%= f.input :faltas%>
+  <div id="topics-container">
+    <%= f.label :topics, "Topics" %>
+    <% (@disciplina.topics || []).each_with_index do |topic, index| %>
+      <div class="topic-field">
+        <%= f.text_field :topics, name: "disciplina[topics][]", value: topic %>
+        <button type="button" class="remove-topic" data-index="<%= index %>">Remove</button>
+      </div>
+    <% end %>
+
+  </div>
+  <button type="button" id="add-topic">Add Topic</button>
   <%= f.submit "Salvar" %>
 <% end %>

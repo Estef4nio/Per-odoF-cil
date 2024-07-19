@@ -19,6 +19,13 @@
             </div>
           <% end %>
         <% end %>
+        <% @disciplinas.each do |disciplina| %>
+          <ul>
+            <% disciplina.topics.each do |topic| %>
+              <li><%= disciplina.nome %> - <%= topic %></li>
+            <% end %>
+          </ul>
+        <% end %>
       </div>
     </div>
     <div class="upper-rigth"></div>

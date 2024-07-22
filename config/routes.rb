@@ -12,4 +12,6 @@ Rails.application.routes.draw do
   resources :periodos
   resources :disciplinas
   resources :avaliacaos
+
+  mount ActionCable.server => '/cable'
 end

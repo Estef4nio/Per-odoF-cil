@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Iceland&family=Jura:wght@300..700&display=swap');
 
 @media only screen and (max-width: 720px) {
-  .login-container form {
+  .authentication-container form {
     max-width: 315px;
   }
 }
 
-.login-container {
+.authentication-container {
   width: 100vw;
   min-height: 100vh;
   display: flex;
@@ -16,19 +16,23 @@
   background-color: #F5F5F5;
 }
 
-.login-container form {
+.authentication-container form {
   width: 30em;
+  min-height: 625px;
+  /* height: 80vh; */
   background-color: #F5F5F5;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  padding: 3rem 0 3rem 0;
+  padding: 30px 0 30px 0;
+  /* padding: 3rem 0 3rem 0; */
   box-shadow: 0 4px 4px #00000040;
   border: 2px solid rgba(0, 0, 0, 0.2);
   border-radius: 20px;
 }
 
-.login-container form h1 {
+.authentication-container h1 {
   font-family: "Iceland";
   color: #184875;
   text-align: center;
@@ -36,7 +40,7 @@
   margin-bottom: 1.5rem;
 }
 
-.login-container form .field-with-icon {
+.authentication-container form .field-with-icon {
   position: relative;
   width: 80%;
   display: flex;
@@ -44,14 +48,14 @@
   margin-bottom: 1.5rem;
 }
 
-.login-container form .field-with-icon .custom-input-icon {
+.authentication-container form .field-with-icon .custom-input-icon {
   position: absolute;
   left: 15px;
   width: 24px;
   color: #184875;
 }
 
-.login-container form .custom-input {
+.authentication-container form .custom-input {
   font-family: "Jura";
   width: 100%;
   height: 60px;
@@ -66,24 +70,24 @@
 }
 
 
-.login-container form .custom-input:focus {
+.authentication-container form .custom-input:focus {
   border: rgba(24, 72, 117, 0.8) solid 4px;
   outline: none;
 }
 
-.login-container form .custom-input::placeholder {
+.authentication-container form .custom-input::placeholder {
   opacity: 50%;
   font-weight: 100;
 }
 
-.login-container form .user_remember_me {
+.authentication-container form .user_remember_me {
   width: 80%;
   color: #184875;
   margin: 0 0 0.5rem 2rem;
   /* margin-bottom: 1.5rem; */
 }
 
-.login-container form .user_remember_me label {
+.authentication-container form .user_remember_me label {
   display: flex;
   align-items: center;
   font-family: "Iceland", sans-serif;
@@ -92,14 +96,15 @@
   cursor: pointer;
 }
 
-.login-container form .user_remember_me label input {
+.authentication-container form .user_remember_me label input {
   margin-right: 0.6em;
   width: 16px;
   height: 16px;
+  border: 2px solid #184875;
   cursor: pointer;
 }
 
-.login-container form .user_remember_me label input:checked {
+.authentication-container form .user_remember_me label input:checked {
   background-color: #184875;
   border-color: #184875;
 }
@@ -113,7 +118,7 @@
   }
 }
 
-.login-container form .btn {
+.authentication-container form .btn {
   width: 80%;
   height: 60px;
   font-family: "Jura";
@@ -129,27 +134,27 @@
   transition: all 0.5s;
 }
 
-.login-container form .btn:hover {
+.authentication-container form .btn:hover {
   border: 1px solid #1848754b;
   color: #184875;
   background-color: #F5F5F5;
   animation: change-scale 2s ease-in-out infinite;
 }
 
-.login-container form .divider {
+.authentication-container form .divider {
   width: 80%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.login-container form .divider span {
+.authentication-container form .divider span {
   font-family: "Jura";
   opacity: 0.5;
   padding: 20px 10px 20px 10px;
 }
 
-.login-container form .divider hr {
+.authentication-container form .divider hr {
   flex-grow: 1;
 }
 
@@ -160,6 +165,6 @@
   margin-bottom: 1rem;
 }
 
-.login-container form .sign-up {
+.authentication-container form .sign-up {
   font-family: "Iceland";
 }

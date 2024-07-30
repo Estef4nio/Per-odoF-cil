@@ -1,4 +1,33 @@
-<h2><%= t(".forgot_your_password") %></h2>
+<%= stylesheet_link_tag 'page/form.css' %>
+
+<div class="authentication-container">
+  <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+    <h1>Período Fácil</h1>
+    <%= f.error_notification %>
+    
+    <div class="field-with-icon">
+      <%= inline_svg 'Email.svg', alt: "E-mail Icon", class: "custom-input-icon" %>
+      <%= text_field_tag "#{resource_name}[email]", nil, 
+        required: true, autofocus: true, autocomplete: "email", 
+        placeholder: "E-mail", class: "custom-input" %>
+    </div>
+
+    <%= f.button :submit, t(".send_me_reset_password_instructions"), class: "submit" %>
+
+    <div class="divider">
+      <hr>
+      <span>OR</span>
+      <hr>
+    </div>
+
+    <p class="sign-up">Não possui uma conta? <%= link_to "Cadastra-se", new_registration_path(resource_name) %></p>
+    <p class="sign-up">Já possui uma conta? <%= link_to "Log in", new_session_path(resource_name) %></p>
+  <% end %>
+</div>
+
+
+
+<!-- <h2><%= t(".forgot_your_password") %></h2>
 
 <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
   <%= f.error_notification %>
@@ -15,4 +44,4 @@
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<%= render "devise/shared/links" %> -->

@@ -3,19 +3,20 @@
 class Users::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
 
-  def create
-    user = User.find_by("username = ? OR email = ?", params[:user][:login], params[:user][:login].downcase)
-    if user
-      session[:user_id] = user.id
-      cookies.encrypted[:user_id] = user.id
-    end
-    super
-  end
+  # def create
+  #   # puts(params[:login])
+  #   user = User.find_by("username = ? OR email = ?", params[:login], params[:login].downcase)
+  #   if user
+  #     session[:user_id] = user.id
+  #     cookies.encrypted[:user_id] = user.id
+  #   end
+  #   super
+  # end
 
-  def destroy
-    cookies.delete(:user_id)
-    super
-  end
+  # def destroy
+  #   cookies.delete(:user_id)
+  #   super
+  # end
 
   # GET /resource/sign_in
   # def new

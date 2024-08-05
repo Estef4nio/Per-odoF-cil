@@ -1,28 +1,36 @@
 <%= stylesheet_link_tag 'page/form.css' %>
+<%= stylesheet_link_tag 'page/custom_checkbox.css' %>
 
 <div class="authentication-container">
   <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <h1>Período Fácil</h1>
     
-    <div class="field-with-icon">
-      <%= inline_svg 'User.svg', alt: "User Icon", class: "custom-input-icon" %>
-      <%= text_field_tag "#{resource_name}[login]", nil, required: true, autofocus: true, autocomplete: "login", placeholder: "Login", class: "custom-input" %>
+    <div class="container-form-fields">
+      <div class="field-with-icon">
+        <%= inline_svg 'User.svg', alt: "User Icon", class: "custom-input-icon" %>
+        <%= text_field_tag "#{resource_name}[login]", nil, required: true, autofocus: true, autocomplete: "login", placeholder: "Login", class: "custom-input" %>
+      </div>
+      <div class="field-with-icon">
+        <%= inline_svg 'Lock.svg', alt: "Lock Icon", class: "custom-input-icon" %>
+        <%= password_field_tag "#{resource_name}[password]", nil, required: true, autofocus: true, autocomplete: "current-password", placeholder: "Senha", class: "custom-input" %>
+      </div>
+      <div class="checkbox-wrapper-19">
+        <%= f.check_box :remember_me, id: "cbtest-19"%>
+        <label for="cbtest-19" class="check-box"></label>
+        <p class="checkbox-label-title">Lembre-se de mim</p>
+      </div>  
+      <%= f.button :submit, t(".sign_in"), class: "submit" %>
     </div>
-    <div class="field-with-icon">
-      <%= inline_svg 'Lock.svg', alt: "Lock Icon", class: "custom-input-icon" %>
-      <%= password_field_tag "#{resource_name}[password]", nil, required: true, autofocus: true, autocomplete: "current-password", placeholder: "Senha", class: "custom-input" %>
+
+    <div class="container-form-footer">
+      <div class="divider">
+        <hr>
+        <span>OR</span>
+        <hr>
+      </div>
+  
+      <%= link_to "Esqueceu a senha?", new_password_path(resource_name) %>
+      <p class="sign-up">Não possui uma conta? <%= link_to "Cadastra-se", new_registration_path(resource_name) %></p>
     </div>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-
-    <%= f.button :submit, t(".sign_in"), class: "submit" %>
-
-    <div class="divider">
-      <hr>
-      <span>OR</span>
-      <hr>
-    </div>
-
-    <%= link_to "Esqueceu a senha?", new_password_path(resource_name) %>
-    <p class="sign-up">Não possui uma conta? <%= link_to "Cadastra-se", new_registration_path(resource_name) %></p>
   <% end %>
 </div>

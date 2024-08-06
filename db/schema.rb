@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_19_184855) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_06_013017) do
   create_table "avaliacaos", force: :cascade do |t|
     t.string "nome"
     t.text "descricao"
@@ -41,6 +41,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_19_184855) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "topicos", force: :cascade do |t|
+    t.string "nome"
+    t.boolean "estaFinalizado"
+    t.integer "disciplina_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["disciplina_id"], name: "index_topicos_on_disciplina_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -59,5 +68,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_19_184855) do
 
   add_foreign_key "avaliacaos", "disciplinas"
   add_foreign_key "disciplinas", "periodos"
+  add_foreign_key "topicos", "disciplinas"
   add_foreign_key "users", "periodos"
 end

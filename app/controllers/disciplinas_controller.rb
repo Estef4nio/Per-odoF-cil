@@ -5,21 +5,27 @@ class DisciplinasController < ApplicationController
 
   def new
     @disciplina = Disciplina.new
+    @disciplina.topicos.build
   end
 
   def edit
   end
   
   def create
-    topics_params = params[:disciplina][:topics] || []
-    @disciplina = current_user.periodo.disciplinas.create(params_disciplina.merge(topics: topics_params))
-    respond_with(@disciplina, location: root_path)
+    @disciplina = current_user.periodo.disciplinas.create(params_disciplina)
+    if @disciplina.save
+      redirect_to @disciplina, notice: 'Disciplina was successfully created.'
+    else
+      render :new
+    end
   end
 
   def update
-    topics_params = params[:disciplina][:topics] || []
-    @disciplina.update(params_disciplina.merge(topics: topics_params))
-    respond_with(@disciplina, location: root_path)
+    if @disciplina.update(params_disciplina)
+      redirect_to @disciplina, notice: 'Disciplina was successfully updated.'
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -30,7 +36,7 @@ class DisciplinasController < ApplicationController
   private
 
   def params_disciplina
-    params.require(:disciplina).permit(:nome, :carga_horaria, :creditos, :faltas, topics: [])
+    params.require(:disciplina).permit(:nome, :carga_horaria, :creditos, :faltas, topicos_attributes: [:id, :nome, :_destroy])
   end
 
   def set_disciplina

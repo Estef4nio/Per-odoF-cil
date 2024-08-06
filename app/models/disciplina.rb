@@ -1,6 +1,8 @@
 class Disciplina < ApplicationRecord
   belongs_to :periodo
   has_many :avaliacaos
+  has_many :topicos, dependent: :destroy
+  accepts_nested_attributes_for :topicos, allow_destroy: true, reject_if: ->(attrs) { attrs['nome'].blank? }
 
   @media
 
@@ -12,7 +14,6 @@ class Disciplina < ApplicationRecord
     @media.round(2)
   end
   
-  serialize :topics, JSON
   validates :nome, presence: true
   validates :carga_horaria, presence: true
   validates :creditos, presence: true

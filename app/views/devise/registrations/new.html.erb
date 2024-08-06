@@ -1,7 +1,7 @@
 <%= stylesheet_link_tag 'page/form.css' %>
 
-<div class="authentication-container">
-  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<div class="center-form-container">
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: "main-form-container"}) do |f| %>
     <h1>Período Fácil</h1>
     
     <%= f.error_notification %>
@@ -14,7 +14,7 @@
       </div>
       <div class="field-with-icon">
         <%= inline_svg 'Email.svg', alt: "E-mail Icon", class: "custom-input-icon" %>
-        <%= text_field_tag "#{resource_name}[email]", nil, 
+        <%= email_field_tag "#{resource_name}[email]", nil, 
           required: true, autofocus: true, autocomplete: "email", 
           placeholder: "E-mail", class: "custom-input" %>
       </div>

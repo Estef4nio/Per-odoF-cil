@@ -1,7 +1,7 @@
 <%= stylesheet_link_tag 'page/form.css' %>
 
-<div class="authentication-container">
-  <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+<div class="center-form-container">
+  <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: "main-form-container" }) do |f| %>
     <h1>Período Fácil</h1>
     
     <div class="container-form-fields">

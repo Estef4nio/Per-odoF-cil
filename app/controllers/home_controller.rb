@@ -10,7 +10,11 @@ class HomeController < ApplicationController
         @media += ava.nota * ava.peso
         @peso += ava.peso
       end
-      @media /= @peso
+      if @peso == 0 then
+        @media = 0
+      else
+        @media /= @peso
+      end
       disc.set_media(@media)
     end
     @eventos = filter_events(@avaliacaos)

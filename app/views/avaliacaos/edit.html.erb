@@ -1,10 +1,5 @@
-<h1>Editing avaliacao</h1>
-
+<%= content_for :title do %>
+  Editar Avaliação
+<% end %>
 <%= render "form", avaliacao: @avaliacao %>
 
-<br>
-
-<div>
-  <%= link_to "Show this avaliacao", @avaliacao %> |
-  <%= link_to "Back to avaliacaos", avaliacaos_path %>
-</div>

@@ -1,5 +1,34 @@
+<%= stylesheet_link_tag 'page/form.css' %>
 
-<%= simple_form_for(@avaliacao) do |f| %>
+<div class="authentication-container">
+  <%= simple_form_for(@avaliacao) do |f| %>
+    <h1>Avaliação</h1>
+    <div class="container-form-fields">
+      <div class="field-with-icon">
+        <%= inline_svg 'Book.svg', alt: "Book Icon", class: "custom-input-icon" %>
+        <%= text_field_tag :nome, nil, required: true, autofocus: true, autocomplete: "nome_avaliacao", placeholder: "Nome da Avaliação", class: "custom-input" %>
+      </div>
+      <div class="field-with-icon">
+        <%= inline_svg 'Award.svg', alt: "Award Icon", class: "custom-input-icon" %>
+        <%= number_field_tag :nota, nil, required: true, autofocus: true, autocomplete: "nota_avaliacao", placeholder: "Nota", class: "custom-input" %>
+      </div>
+      <div class="field-with-icon">
+        <%= inline_svg 'Award.svg', alt: "Award Icon", class: "custom-input-icon" %>
+        <%= number_field_tag :peso, nil, required: true, autofocus: true, autocomplete: "peso_avaliacao", placeholder: "Peso", class: "custom-input" %>
+      </div>
+      <div class="field-with-icon">
+        <%= inline_svg 'Calendar.svg', alt: "Calendar Icon", class: "custom-input-icon" %>
+        <%= datetime_field_tag :data, nil, required: true, autofocus: true, autocomplete: "data", placeholder: "Data", class: "custom-input" %>
+      </div>
+      <div class="field-with-icon">
+        <%= text_area_tag :descricao, nil, required: true, autofocus: true, autocomplete: "descricao", placeholder: "Descrição", class: "" %>
+      </div>
+      <%= f.button :submit, "Cadastrar", class: "submit" %>
+    </div>
+  <% end %>
+</div>
+
+<!-- <%= simple_form_for(@avaliacao) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
@@ -19,4 +48,4 @@
   <div class="form-actions">
     <%= f.button :submit %>
   </div>
-<% end %>
+<% end %> -->

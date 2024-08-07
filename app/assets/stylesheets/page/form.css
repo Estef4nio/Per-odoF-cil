@@ -110,12 +110,12 @@
   width: 32px;
   color: #184875;
   pointer-events: none;
+  transition: transform 0.4s;
 }
 
-.main-form-container select:focus ~ .dropdown-input-icon
+.main-form-container select:focus + .dropdown-input-icon
 {
-  background-color: red;
-  color: red;
+  transform: rotateZ(180deg);
 }
 
 .main-form-container .user_remember_me {

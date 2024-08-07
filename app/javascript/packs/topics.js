@@ -18,16 +18,21 @@ function initializeTopics()
       const inputFields = topicosFieldsDiv.querySelectorAll('.topico-nome');
       const lastInputField = inputFields[inputFields.length - 1];
   
-      // If the last input field has text, add a new empty input field
       if (lastInputField.value.trim() !== '') {
         addNewTopicoField();
       }
-  
-      // Remove extra empty input fields
+
+      // Handle removal of extra empty input fields
       inputFields.forEach((inputField, index) => {
+        const nestedFieldDiv = inputField.closest('.nested-fields');
         if (inputField.value.trim() === '' && index !== inputFields.length - 1) {
-          inputField.closest('.nested-fields').remove();
-          // inputField.parentNode.remove();
+
+          const destroyField = nestedFieldDiv.querySelector('input[name*="_destroy"]');
+          if (destroyField) {
+            destroyField.value = '1'; // Mark it for destruction
+            nestedFieldDiv.style.display = 'none'; // Hide the field
+          } else nestedFieldDiv.remove(); // For new, unsaved fields, simply remove them
+          
         }
       });
     }
@@ -53,6 +58,7 @@ function initializeTopics()
   
     // Event delegation to handle input change on dynamically added fields
     topicosFieldsDiv.addEventListener('input', handleTopicoInputChange);
+    handleTopicoInputChange();
   }
 }
 

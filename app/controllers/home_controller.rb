@@ -18,6 +18,12 @@ class HomeController < ApplicationController
       disc.set_media(@media)
     end
     @eventos = filter_events(@avaliacaos)
+
+    @color_data = [
+      { date: Date.new(2024, 8, 15), color: "#FF5733" },
+      { date: Date.new(2024, 8, 20), color: "#33FF57" },
+      { date: Date.new(2024, 8, 25), color: "#3357FF" }
+    ]
   end
 
   def filter_events(events)

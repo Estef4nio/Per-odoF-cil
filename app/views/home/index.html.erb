@@ -36,12 +36,13 @@
   </div>
   <div class="container bottom">
     <div class="calendario">
-      <%= month_calendar(events: @avaliacaos) do |date, avaliacaos| %>
+      <%= render 'calendars/calendar', events: @avaliacaos, year: 2024, month: 8, color_data: @color_data %>
+      <!-- <%= month_calendar(events: @avaliacaos) do |date, avaliacaos| %>
         <%= date %>
         <% avaliacaos.each do |avaliacao| %>
           <div><%= avaliacao.nome %></div>
         <% end %>
-      <% end %>
+      <% end %> -->
     </div>
   </div>
 </div>

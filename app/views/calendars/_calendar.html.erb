@@ -1,0 +1,26 @@
+<%= stylesheet_link_tag '_calendar_partial.css', media: 'all' %>
+<div class="calendar-container">
+    <% days_in_month(year, month).each do |day_name, details| %>
+    <div class="week-container">
+        <span class="day-title"><%= details[:symbolBR] %></span>
+        <ul>
+            <% details[:days].each do |day_info| %>
+                <% 
+                  day_class = []
+                    day_class << 'current-day' if day_info[:current]
+                    day_class << 'wrong-month-day' if day_info[:from_previous_month]
+                    day_class << 'wrong-month-day' if day_info[:from_next_month]
+                  custom_style = ''
+                  date = Date.new(year, month, day_info[:day])
+                  color_info = color_data.find { |c| c[:date] == date }
+                  custom_style = "style='background-color: #{color_info[:color]};'" if color_info
+
+                %>
+              <li class="<%= day_class.join(" ") %>" <%= custom_style.html_safe %> >
+                <%= day_info[:day] %>
+              </li>
+            <% end %>
+        </ul>
+    </div>
+    <% end %>
+</div>

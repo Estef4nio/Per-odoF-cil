@@ -1,0 +1,14 @@
+<div class="nav-bar">
+  <div class="nav-content left">
+    <div> <%= link_to "Logo", root_path, class: "nav-link" %> </div>
+    <div> <%= link_to "Home", root_path, class: "nav-link" %> </div>
+    <div> <%= link_to "Cadastrar Disciplina", new_disciplina_path, class: "nav-link" %> </div>
+    <div> <%= link_to "Cadastrar Avaliação", new_avaliacao_path, class: "nav-link" %> </div>
+  </div>
+  <div class="nav-content middle">
+    <%= yield :title %>
+  </div>
+  <div class="nav-content right">
+    <%= button_to "logout", destroy_user_session_path, method: :delete%>
+  </div>
+</div>

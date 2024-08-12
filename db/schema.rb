@@ -10,7 +10,46 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_15_205800) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_06_013017) do
+  create_table "avaliacaos", force: :cascade do |t|
+    t.string "nome"
+    t.text "descricao"
+    t.float "nota"
+    t.integer "peso"
+    t.date "data"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "disciplina_id"
+    t.index ["disciplina_id"], name: "index_avaliacaos_on_disciplina_id"
+  end
+
+  create_table "disciplinas", force: :cascade do |t|
+    t.string "nome", null: false
+    t.integer "carga_horaria", null: false
+    t.integer "creditos", null: false
+    t.integer "faltas", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "periodo_id"
+    t.text "topics", default: "[]"
+    t.index ["periodo_id"], name: "index_disciplinas_on_periodo_id"
+  end
+
+  create_table "periodos", force: :cascade do |t|
+    t.string "nome", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "topicos", force: :cascade do |t|
+    t.string "nome"
+    t.boolean "estaFinalizado"
+    t.integer "disciplina_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["disciplina_id"], name: "index_topicos_on_disciplina_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -19,8 +58,16 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_15_205800) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "username"
+    t.integer "periodo_id"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["periodo_id"], name: "index_users_on_periodo_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "avaliacaos", "disciplinas"
+  add_foreign_key "disciplinas", "periodos"
+  add_foreign_key "topicos", "disciplinas"
+  add_foreign_key "users", "periodos"
 end

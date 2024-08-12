@@ -1,0 +1,48 @@
+<%= content_for :title do %>
+  <% if current_user.periodo %>
+    <%= link_to "Ciência da Computação: #{current_user.periodo.nome}", edit_periodo_path(current_user.periodo) %>
+  <% else %>
+    <%= link_to "Iniciar um Periodo", new_periodo_path %>
+  <% end %>
+<% end %>
+<div class="content-container">
+  <% @eventos.each do |evento| %>
+  <p>A <%= evento[:nome] %> ocorrerá em <%= evento[:dias_restantes] %> dias </p>
+  <% end %>
+  <div class="container upper">
+    <!-- A Prova 1f será daqui a 1 semana -->
+    <div class="upper-left">
+      <h1 id="titulo-disciplinas">Disciplinas</h1>
+      <div class="card-wrapper">
+        <% if @disciplinas %>
+          <% @disciplinas.each do |disciplina| %>
+            <div class="card-disciplina">
+              <%= link_to disciplina.nome, edit_disciplina_path(:id => disciplina.id), class: "nav-link" %>
+              <p>Faltas: <%= disciplina.faltas %></p>
+              <p>Média: <%= disciplina.get_media %></p>
+            </div>
+          <% end %>
+        <% end %>
+        <% @disciplinas.each do |disciplina| %>
+          <ul>
+            <% disciplina.topicos.each do |topic| %>
+              <li><%= disciplina.nome %> - <%= topic.nome %></li>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
+    </div>
+    <div class="upper-rigth"></div>
+  </div>
+  <div class="container bottom">
+    <div class="calendario">
+      <%= render 'calendars/calendar', events: @avaliacaos, year: 2024, month: 8, color_data: @color_data %>
+      <!-- <%= month_calendar(events: @avaliacaos) do |date, avaliacaos| %>
+        <%= date %>
+        <% avaliacaos.each do |avaliacao| %>
+          <div><%= avaliacao.nome %></div>
+        <% end %>
+      <% end %> -->
+    </div>
+  </div>
+</div>

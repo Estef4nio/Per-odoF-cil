@@ -1,0 +1,56 @@
+<%= stylesheet_link_tag 'page/form.css' %>
+
+<div class="center-form-container">
+  <%= simple_form_for(@avaliacao, html: {class: "main-form-container"}) do |f| %>
+    <h1>Avaliação</h1>
+    <div class="container-form-fields">
+      <div class="field-with-icon">
+        <%= inline_svg 'Book.svg', alt: "Book Icon", class: "custom-input-icon" %>
+        <%= f.text_field :nome, required: true, autofocus: true, autocomplete: "nome_avaliacao", placeholder: "Nome da Avaliação", class: "custom-input" %>
+      </div>
+      <div class="field-with-icon">
+        <%= inline_svg 'Award.svg', alt: "Award Icon", class: "custom-input-icon" %>
+        <%= f.number_field :nota, required: true, autofocus: true, autocomplete: "nota_avaliacao", placeholder: "Nota", class: "custom-input" %>
+      </div>
+      <div class="field-with-icon">
+        <%= inline_svg 'Award.svg', alt: "Award Icon", class: "custom-input-icon" %>
+        <%= f.number_field :peso, required: true, autofocus: true, autocomplete: "peso_avaliacao", placeholder: "Peso", class: "custom-input" %>
+      </div>
+      <div class="field-with-icon">
+        <%= inline_svg 'Calendar.svg', alt: "Calendar Icon", class: "custom-input-icon" %>
+        <%= f.datetime_field :data, required: true, autofocus: true, autocomplete: "data", placeholder: "Data", class: "custom-input" %>
+      </div>
+      <div class="field-with-icon">
+        <%= f.text_area :descricao, required: true, autofocus: true, autocomplete: "descricao", placeholder: "Descrição", class: "" %>
+      </div>
+      <div class="field-with-icon">
+        <%= inline_svg 'Book.svg', alt: "Book Icon", class: "custom-input-icon" %>
+        <%= f.collection_select :disciplina_id, Disciplina.all, :id, :nome, prompt: "Disciplina"%>
+        <%= inline_svg 'ArrowDropDown.svg', alt: "Dropdown Arrow Icon", class: "dropdown-input-icon" %>
+      </div> 
+      <%= f.button :submit, "Cadastrar", class: "submit" %>
+    </div>
+  <% end %>
+</div>
+
+<!-- <%= simple_form_for(@avaliacao) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :nome %>
+    <%= f.input :descricao %>
+    <%= f.input :nota %>
+    <%= f.input :peso %>
+    <%= f.input :data %>
+
+    <div class="field">
+      <%= f.label :disciplina_id %>
+      <%= f.collection_select :disciplina_id, Disciplina.all, :id, :nome, prompt: true %>
+    </div> 
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %> -->

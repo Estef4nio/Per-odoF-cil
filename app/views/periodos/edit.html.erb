@@ -1,0 +1,5 @@
+<%= content_for :title do %>
+  Editar Período
+<% end %>
+<%= render "form" %>
+<%= button_to "Excluir", periodo_path(@periodo), method: :delete %>

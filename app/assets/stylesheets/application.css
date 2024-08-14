@@ -132,3 +132,15 @@ body {
   margin-top: 10em;
   /* padding-bottom: 4em; */
 }
+
+#menu-icon {
+  cursor: pointer;
+}
+
+.menu-hidden {
+  display: none;
+}
+
+.menu-visible {
+  display: block;
+}

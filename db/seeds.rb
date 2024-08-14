@@ -7,3 +7,16 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+# db/seeds.rb
+
+# Encontre ou crie um período relacionado ao usuário, se necessário
+periodo = Periodo.find_or_create_by!(nome: "2024/1")
+
+# Crie um usuário com os atributos fornecidos
+User.create!(
+  email: 'tang@gmail.com',
+  username: 'tang',
+  password: '123456',
+  password_confirmation: '123456',
+  periodo_id: periodo.id
+)

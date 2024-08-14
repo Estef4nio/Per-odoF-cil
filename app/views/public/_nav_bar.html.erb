@@ -9,6 +9,19 @@
     <%= yield :title %>
   </div>
   <div class="nav-content right">
-    <%= button_to "logout", destroy_user_session_path, method: :delete%>
+    <%= inline_svg 'dropd1.svg', alt: "DropDown Menu Icon", class: "custom-input-icon", id: "menu-icon" %>
+    <div class="menu-hidden" id="dropdown-menu">
+      <%= link_to 'Edit', edit_user_registration_path(current_user) %>
+      <%= button_to "logout", destroy_user_session_path, method: :delete%>
+    </div>
   </div>
 </div>
+
+<script>
+  const menuIcon = document.getElementById('menu-icon');
+  const dropdownMenu = document.getElementById('dropdown-menu');
+  menuIcon.addEventListener('click', () => {
+    dropdownMenu.classList.toggle('menu-visible');
+    dropdownMenu.classList.toggle('menu-hidden');
+  })
+</script>

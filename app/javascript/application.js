@@ -2,3 +2,26 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 import "./packs/topics"
+
+
+document.addEventListener('turbo:load', function() {
+  const menuIcon = document.getElementById('menu-icon');
+  const dropdownMenu = document.getElementById('dropdown-menu');
+
+  menuIcon.addEventListener('click', function() {
+    if (dropdownMenu.classList.contains('menu-show')) {
+      dropdownMenu.classList.replace('menu-show', "menu-hidden");
+      menuIcon.style.transform = 'rotate(0deg)'; // Voltar à posição original
+    } else {
+      dropdownMenu.classList.replace('menu-hidden', "menu-show");
+      menuIcon.style.transform = 'rotate(180deg)'; // Rotacionar
+    }
+  });
+
+  window.addEventListener('click', function(e) {
+    if (!menuIcon.contains(e.target) && !dropdownMenu.contains(e.target)) {
+      dropdownMenu.classList.replace('menu-show', "menu-hidden");
+      menuIcon.style.transform = 'rotate(0deg)'; // Voltar à posição original ao clicar fora
+    }
+  });
+});

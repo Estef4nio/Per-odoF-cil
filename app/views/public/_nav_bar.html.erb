@@ -1,27 +1,34 @@
-<div class="nav-bar">
-  <div class="nav-content left">
-    <div> <%= link_to "Logo", root_path, class: "nav-link" %> </div>
-    <div> <%= link_to "Home", root_path, class: "nav-link" %> </div>
-    <div> <%= link_to "Cadastrar Disciplina", new_disciplina_path, class: "nav-link" %> </div>
-    <div> <%= link_to "Cadastrar Avaliação", new_avaliacao_path, class: "nav-link" %> </div>
-  </div>
-  <div class="nav-content middle">
-    <%= yield :title %>
-  </div>
-  <div class="nav-content right">
-    <%= inline_svg 'dropd1.svg', alt: "DropDown Menu Icon", class: "custom-input-icon", id: "menu-icon" %>
+<%= stylesheet_link_tag '_custom_navbar.css', media: 'all' %>
+<header class="nav-bar">
+  <%= link_to root_path, class: "nav-link", title: "Home" do %>
+    <%= inline_svg 'Logo.svg', alt: "Logo Icon", class: "logo-icon" %>
+  <% end %>
+
+  <nav class="nav-content-navigation">
+    <%= link_to "Cadastrar Disciplina", new_disciplina_path, class: "nav-link #{'active' if current_page?(new_disciplina_path)}" %>
+    <%= link_to "Cadastrar Avaliação", new_avaliacao_path, class: "nav-link #{'active' if current_page?(new_avaliacao_path)}" %>
+  </nav>
+
+  <div class="nav-content-info">
+    <!-- Ícone de sino -->
+    <div class="notification-container">
+      <%= inline_svg 'bell.svg', alt: "Notificações Icon", class: "notification-icon" %>
+    </div>
+
+    <!-- Seção de perfil -->
+    <div class="profile-section">
+      <%= image_tag('PerfilIcon.png', alt: 'Profile Image', class: "user-image") %>
+      <div class="profile-info">
+        <p class="user-name"><%= current_user.username %></p>
+        <p class="user-course"><%= current_user.curso || "Curso Não Definido" %> - <%= current_user.periodo.nome %>º</p>
+      </div>
+      <%= inline_svg 'dropd1.svg', alt: "Menu", class: "menu-icon", id: "menu-icon" %>
+    </div>
+
+    <!-- Menu dropdown (oculto) -->
     <div class="menu-hidden" id="dropdown-menu">
       <%= link_to 'Edit', edit_user_registration_path(current_user) %>
-      <%= button_to "logout", destroy_user_session_path, method: :delete%>
+      <%= button_to "Logout", destroy_user_session_path, method: :delete %>
     </div>
   </div>
-</div>
-
-<script>
-  const menuIcon = document.getElementById('menu-icon');
-  const dropdownMenu = document.getElementById('dropdown-menu');
-  menuIcon.addEventListener('click', () => {
-    dropdownMenu.classList.toggle('menu-visible');
-    dropdownMenu.classList.toggle('menu-hidden');
-  })
-</script>
+</header>

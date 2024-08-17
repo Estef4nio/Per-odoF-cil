@@ -16,6 +16,16 @@ periodo = Periodo.find_or_create_by!(nome: "2024/1")
 User.create!(
   email: 'tang@gmail.com',
   username: 'tang',
+  curso: 'Computação',
+  password: '123456',
+  password_confirmation: '123456',
+  periodo_id: periodo.id
+)
+
+User.create!(
+  email: 'ausberto@gmail.com',
+  username: 'Asberto Castro',
+  curso: 'Matemática',
   password: '123456',
   password_confirmation: '123456',
   periodo_id: periodo.id

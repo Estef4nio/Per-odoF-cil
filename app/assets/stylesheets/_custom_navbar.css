@@ -1,0 +1,184 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #184875;
+  box-shadow: 0 4px 4px #00000055;
+  padding: 0 2rem;
+  color: #f5f5f5;
+  font-family: "Inter";
+  gap: 2rem;
+}
+
+.nav-bar p, .nav-bar a {
+  font-family: "Inter";
+}
+
+.nav-bar .nav-content-navigation {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  color: #f5f5f5;
+}
+
+.nav-bar .nav-content-navigation .nav-link {
+  position: relative;
+  color: #f5f5f510;
+  font-weight: 400;
+  font-size: 1.2em;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #f5f5f530;
+}
+
+.nav-bar .nav-content-navigation .nav-link.active {
+  color: #f5f5f5;
+}
+
+.nav-bar .nav-content-navigation .nav-link.active::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -10px;
+  width: 8px;
+  height: 8px;
+  background-color: white;
+  border-radius: 50%;
+  transition: left 0.3s ease, transform 0.3s ease; /* Smooth transition */
+}
+
+.nav-bar .nav-content-info {
+  display: flex;
+  align-items: center;
+  position: relative;
+  gap: 2em;
+}
+
+.nav-bar .nav-content-info .notification-container {
+  display: flex;
+  cursor: pointer;
+  background-color: rgba(27, 36, 53, 0.7);
+  border-radius: 50px;
+  border: 1px solid rgba(245, 245, 245, 0.3);
+  padding: 0.6em;
+  transition: all 0.5s;
+}
+
+.nav-bar .nav-content-info .notification-container:hover {
+  background-color: rgba(245, 245, 245, 0.7);
+  border: 1px solid rgba(27, 36, 53, 0.3);
+}
+
+.nav-bar .nav-content-info .notification-container:hover .notification-icon {
+  color: rgba(27, 36, 53, 1);
+}
+
+.nav-bar .nav-content-info .profile-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 250px;
+  background-color: rgba(27, 36, 53, 0.7);
+  border: 1px solid rgba(245, 245, 245, 0.3);
+  border-radius: 30px;
+  padding: 0.3em 0.5em;
+  user-select: none;
+  gap: 0.5em;
+}
+
+.nav-bar .nav-content-info .profile-section .user-image {
+  border-radius: 40px;
+  border: 1px solid rgba(245, 245, 245, 0.3);
+}
+
+.nav-bar .nav-content-info .profile-section .profile-info {
+  width: 150px;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #f5f5f530;
+}
+
+.nav-bar .nav-content-info .profile-section .profile-info .user-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 500;
+  font-size: 1.1em;
+}
+
+.nav-bar .nav-content-info .profile-section .profile-info .user-course {
+  color: rgba(245, 245, 245, 0.3);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 0.7em;
+  font-weight: 200;
+}
+
+/* Perfil Menu */
+.nav-bar .nav-content-info .profile-section .menu-icon {
+  width: 1.2em; 
+  height: 1.2em;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.nav-bar #dropdown-menu {
+  position: absolute;
+  transform-origin: top;
+  background-color: #f5f5f5;
+  box-shadow: 0 4px 4px #00000055;
+  top: 115%;
+  right: 0;
+  padding: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  z-index: 10;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.nav-bar #dropdown-menu.menu-hidden {
+  transform: scaleY(0);
+  opacity: 0;
+}
+
+.nav-bar #dropdown-menu.menu-show {
+  transform: scaleY(1);
+  opacity: 1;
+}
+
+/* Estilizar os links e botões dentro do dropdown */
+.nav-bar #dropdown-menu a {
+  display: block;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #eee;
+  padding: 12px 20px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.nav-bar #dropdown-menu form button {
+  background-color: #f5f5f5;
+  border: none;
+  cursor: pointer;
+  padding: 12px 20px;
+}
+
+.nav-bar #dropdown-menu a, .nav-bar #dropdown-menu form button {
+  font-family: "Inter";
+  font-size: 0.9em;
+  font-weight: 500;
+  color: #000000;
+  text-decoration: none;
+}
+
+/* Remove a borda do último item */
+.nav-bar #dropdown-menu a:last-child, .nav-bar #dropdown-menu form:last-child {
+  border-bottom: none; 
+}
+
+/* Efeito hover */
+.nav-bar #dropdown-menu a:hover, .nav-bar #dropdown-menu form button:hover {
+  background-color: #f8f8f8;
+  color: #184875;
+}

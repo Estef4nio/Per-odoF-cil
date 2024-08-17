@@ -20,56 +20,16 @@
   padding: 0;
   box-sizing: border-box;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  text-decoration: none;
 }
 
 body {
   width: auto;
   min-height: 100vh;
-  background-color: #F5F5F5;
+  height: auto;
+  background-color: #f5f5f5;
+  background: linear-gradient(180deg, rgba(24,72,117,1) 12%, rgba(245,245,245,1) 40%) no-repeat;
   overflow: auto;
-}
-
-/* nav-bar style */
-.nav-bar {
-  display: flex;
-  width: 100vw;
-  height: 7vh;
-  justify-content: space-between;
-  position: relative;
-  background-color: #2c5bc9;
-}
-
-.nav-content {
-  color: #f0f1f5;
-  display: flex;
-  height: 100%;
-  align-items: center;
-}
-
-.left {
-  padding-left: 2rem;
-}
-
-.left div {
-  cursor: pointer;
-  margin-right: 1rem;
-}
-
-.middle {
-  font-size: 2rem;
-  position: absolute;
-  right: 50%;
-  transform: translateX(50%);
-  justify-content: center;
-}
-
-.right {
-  padding-right: 2rem;
-}
-
-.nav-link {
-  color: #f0f1f5;
-  text-decoration: none;
 }
 
 /* Home style */
@@ -77,7 +37,7 @@ body {
 .content-container {
   display: flex;
   height: 93vh;
-  width: 100vw;
+  width: 100%;
   flex-direction: column;
 }
 
@@ -85,7 +45,6 @@ body {
   font-size: 20px;
   display: flex;
   width: 100%;
-
 }
 
 .upper {
@@ -131,16 +90,4 @@ body {
 .calendario {
   margin-top: 10em;
   /* padding-bottom: 4em; */
-}
-
-#menu-icon {
-  cursor: pointer;
-}
-
-.menu-hidden {
-  display: none;
-}
-
-.menu-visible {
-  display: block;
 }

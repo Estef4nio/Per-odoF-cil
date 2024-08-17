@@ -11,9 +11,10 @@
                     day_class << 'wrong-month-day' if day_info[:from_previous_month]
                     day_class << 'wrong-month-day' if day_info[:from_next_month]
                   custom_style = ''
+
                   date = Date.new(year, month, day_info[:day])
                   color_info = color_data.find { |c| c[:date] == date }
-                  custom_style = "style='background-color: #{color_info[:color]};'" if color_info
+                  custom_style = "style='background-color: #{color_info[:color]};'" if color_info and !day_info[:from_previous_month] and !day_info[:from_next_month]
 
                 %>
               <li class="<%= day_class.join(" ") %>" <%= custom_style.html_safe %> onclick="handleDayClick('<%= date %>')">

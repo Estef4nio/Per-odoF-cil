@@ -7,7 +7,7 @@ import "./packs/topics"
 document.addEventListener('turbo:load', function() {
   const menuIcon = document.getElementById('menu-icon');
   const dropdownMenu = document.getElementById('dropdown-menu');
-
+  
   menuIcon.addEventListener('click', function() {
     if (dropdownMenu.classList.contains('menu-show')) {
       dropdownMenu.classList.replace('menu-show', "menu-hidden");
@@ -22,6 +22,22 @@ document.addEventListener('turbo:load', function() {
     if (!menuIcon.contains(e.target) && !dropdownMenu.contains(e.target)) {
       dropdownMenu.classList.replace('menu-show', "menu-hidden");
       menuIcon.style.transform = 'rotate(0deg)'; // Voltar à posição original ao clicar fora
+    }
+  });
+
+  const notificationMenu = document.getElementById("notification-menu")
+  const dropdownNotificationMenu = document.getElementById("dropdown-notification-menu")
+  notificationMenu.addEventListener('click', function() {
+    if (dropdownNotificationMenu.classList.contains('menu-show')) {
+      dropdownNotificationMenu.classList.replace('menu-show', "menu-hidden");
+    } else {
+      dropdownNotificationMenu.classList.replace('menu-hidden', "menu-show");
+    }
+  });
+
+  window.addEventListener('click', function(e) {
+    if (!notificationMenu.contains(e.target) && !dropdownNotificationMenu.contains(e.target)) {
+      dropdownNotificationMenu.classList.replace('menu-show', "menu-hidden");
     }
   });
 });

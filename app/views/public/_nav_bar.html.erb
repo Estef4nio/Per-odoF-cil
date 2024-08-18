@@ -11,8 +11,17 @@
 
   <div class="nav-content-info">
     <!-- Ícone de sino -->
-    <div class="notification-container">
+    <div class="notification-container" id="notification-menu">
       <%= inline_svg 'bell.svg', alt: "Notificações Icon", class: "notification-icon" %>
+    </div>
+
+    <div class="menu-hidden" id="dropdown-notification-menu">
+      <% get_eventos().each do |event| %>
+        <div class="notification-info" title="Prova de Cálculo ocorrerá em 4 dias">
+          <p class="title"><b><%= event[:nome] %></b> ocorrerá em <%= event[:dias_restantes] %> dias</p>
+          <p class="date"><%= event[:data] %></p>
+        </div>
+      <% end %>
     </div>
 
     <!-- Seção de perfil -->

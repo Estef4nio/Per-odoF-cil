@@ -18,6 +18,16 @@ module ApplicationHelper
     @eventos = filter_events(@avaliacaos)
   end
 
+  def formatted_event_title(event)
+    if event[:dias_restantes] == 0
+      "hoje"
+    elsif event[:dias_restantes] == 1
+      "em 1 dia"
+    else
+      "em #{event[:dias_restantes]} dias"
+    end
+  end
+
   private 
 
   def filter_events(events)

@@ -16,12 +16,17 @@
     </div>
 
     <div class="menu-hidden" id="dropdown-notification-menu">
-      <% get_eventos().each do |event| %>
-        <div class="notification-info" title="Prova de Cálculo ocorrerá em 4 dias">
-          <p class="title"><b><%= event[:nome] %></b> ocorrerá em <%= event[:dias_restantes] %> dias</p>
-          <p class="date"><%= event[:data] %></p>
-        </div>
+      <% if get_eventos().count == 0 %>
+        <span class="no-notification">Não há nenhuma notificação!</span>
+      <% else %>
+        <% get_eventos().each do |event| %>
+          <div class="notification-info" title="<%= event[:nome] %> ocorrerá <%= formatted_event_title(event) %>">
+            <p class="title"><b><%= event[:nome] %></b> ocorrerá <%= formatted_event_title(event) %></p>
+            <p class="date"><%= event[:data] %></p>
+          </div>
+        <% end %>
       <% end %>
+
     </div>
 
     <!-- Seção de perfil -->

@@ -5,8 +5,9 @@ class Avaliacao < ApplicationRecord
   end
 
   validates :nome, presence: true
-  validates :descricao, presence: true
   validates :nota, presence: true
   validates :peso, presence: true
   validates :data, presence: true
+
+  validates :disciplina_id, presence: true
 end

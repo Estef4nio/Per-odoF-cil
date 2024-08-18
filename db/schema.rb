@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_17_001141) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_18_182149) do
   create_table "avaliacaos", force: :cascade do |t|
     t.string "nome"
     t.text "descricao"
@@ -19,7 +19,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_17_001141) do
     t.date "data"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "disciplina_id"
+    t.integer "disciplina_id", null: false
     t.index ["disciplina_id"], name: "index_avaliacaos_on_disciplina_id"
   end
 
@@ -31,7 +31,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_17_001141) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "periodo_id"
-    t.text "topics", default: "[]"
     t.index ["periodo_id"], name: "index_disciplinas_on_periodo_id"
   end
 
@@ -39,6 +38,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_17_001141) do
     t.string "nome", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.index ["user_id"], name: "index_periodos_on_user_id"
   end
 
   create_table "topicos", force: :cascade do |t|
@@ -59,16 +60,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_17_001141) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "username"
-    t.integer "periodo_id"
     t.string "curso"
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["periodo_id"], name: "index_users_on_periodo_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
   add_foreign_key "avaliacaos", "disciplinas"
   add_foreign_key "disciplinas", "periodos"
+  add_foreign_key "periodos", "users"
   add_foreign_key "topicos", "disciplinas"
-  add_foreign_key "users", "periodos"
 end

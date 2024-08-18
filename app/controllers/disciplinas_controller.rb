@@ -6,26 +6,21 @@ class DisciplinasController < ApplicationController
   def new
     @disciplina = Disciplina.new
     @disciplina.topicos.build
+    respond_with(@disciplina)
   end
 
   def edit
   end
   
   def create
-    @disciplina = current_user.periodo.disciplinas.create(params_disciplina)
-    if @disciplina.save
-      redirect_to @disciplina, notice: 'Disciplina was successfully created.'
-    else
-      render :new
-    end
+    @disciplina = current_user.periodo.disciplinas.new(params_disciplina)
+    @disciplina.save
+    respond_with(@disciplina, location: root_path)
   end
 
   def update
-    if @disciplina.update(params_disciplina)
-      redirect_to @disciplina, notice: 'Disciplina was successfully updated.'
-    else
-      render :edit
-    end
+    @disciplina.update(params_disciplina)
+    respond_with(@disciplina, location: root_path)
   end
 
   def destroy

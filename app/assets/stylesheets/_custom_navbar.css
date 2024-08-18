@@ -198,6 +198,17 @@
   z-index: 10;
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
+.nav-bar #dropdown-notification-menu .no-notification {
+  position: absolute;
+  font-family: "Jura";
+  font-weight: bolder;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.8em;
+  width: 100%;
+  text-align: center;
+  color: #1C2536;
+}
 
 .nav-bar .nav-content-info .notification-info {
   position: relative;

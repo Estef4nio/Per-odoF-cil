@@ -7,6 +7,7 @@ import "./packs/topics"
 document.addEventListener('turbo:load', function() {
   const menuIcon = document.getElementById('menu-icon');
   const dropdownMenu = document.getElementById('dropdown-menu');
+  if(!menuIcon || !dropdownMenu) return;
   
   menuIcon.addEventListener('click', function() {
     if (dropdownMenu.classList.contains('menu-show')) {
@@ -27,6 +28,9 @@ document.addEventListener('turbo:load', function() {
 
   const notificationMenu = document.getElementById("notification-menu")
   const dropdownNotificationMenu = document.getElementById("dropdown-notification-menu")
+
+  if(!notificationMenu || !dropdownNotificationMenu) return;
+
   notificationMenu.addEventListener('click', function() {
     if (dropdownNotificationMenu.classList.contains('menu-show')) {
       dropdownNotificationMenu.classList.replace('menu-show', "menu-hidden");

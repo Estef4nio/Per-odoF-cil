@@ -2,29 +2,69 @@
 <%= stylesheet_link_tag 'page/disciplina_form.css' %>
 
 <%= simple_form_for(@disciplina, html: {class: "disciplina-container"}) do |f| %>
+
   <div class="main-form-container">
     <h1>Disciplina</h1>
     <div class="container-form-fields">
+
       <div class="field-with-icon">
         <%= inline_svg 'Book.svg', alt: "Book Icon", class: "custom-input-icon" %>
-        <%= f.text_field :nome, required: true, autofocus: true, autocomplete: "nome_disciplina", placeholder: "Nome da Disciplina", class: "custom-input" %>
+        <%= f.text_field :nome, required: true, autofocus: true, autocomplete: "nome_disciplina", placeholder: "Nome da Disciplina", 
+          class: "custom-input #{'input-with-error' if f.object.errors[:nome].present?}"
+        %>
+        <% if f.object.errors[:nome].present? %>
+          <div class="error-icon">
+            <%= inline_svg 'Error.svg', alt: "Error Icon" %>
+          </div>
+          <div class="error-message"><%= f.object.errors[:nome].join(", ") %></div>
+        <% end %>
       </div>
+
       <div class="field-with-icon">
         <%= inline_svg 'Clock.svg', alt: "Clock Icon", class: "custom-input-icon" %>
-        <%= f.number_field :carga_horaria, required: true, autofocus: true, autocomplete: "carga_horaria", placeholder: "Carga Horária", class: "custom-input" %>
+        <%= f.number_field :carga_horaria, required: true, autofocus: true, autocomplete: "carga_horaria", placeholder: "Carga Horária", 
+          class: "custom-input #{'input-with-error' if f.object.errors[:carga_horaria].present?}"
+        %>
+        <% if f.object.errors[:carga_horaria].present? %>
+          <div class="error-icon">
+            <%= inline_svg 'Error.svg', alt: "Error Icon" %>
+          </div>
+          <div class="error-message"><%= f.object.errors[:carga_horaria].join(", ") %></div>
+        <% end %>
       </div>
+
       <div class="field-with-icon">
         <%= inline_svg 'Book.svg', alt: "Book Icon", class: "custom-input-icon" %>
-        <%= f.number_field :creditos, required: true, autofocus: true, autocomplete: "creditos", placeholder: "Créditos", class: "custom-input" %>
+        <%= f.number_field :creditos, required: true, autofocus: true, autocomplete: "creditos", placeholder: "Créditos", 
+          class: "custom-input #{'input-with-error' if f.object.errors[:creditos].present?}"
+        %>
+        <% if f.object.errors[:creditos].present? %>
+          <div class="error-icon">
+            <%= inline_svg 'Error.svg', alt: "Error Icon" %>
+          </div>
+          <div class="error-message"><%= f.object.errors[:creditos].join(", ") %></div>
+        <% end %>
       </div>
+
       <div class="field-with-icon">
         <%= inline_svg 'Calendar.svg', alt: "Calendar Icon", class: "custom-input-icon" %>
-        <%= f.number_field :faltas, required: true, autofocus: true, autocomplete: "faltas", placeholder: "Faltas", class: "custom-input" %>
+        <%= f.number_field :faltas, required: true, autofocus: true, autocomplete: "faltas", placeholder: "Faltas", 
+          class: "custom-input #{'input-with-error' if f.object.errors[:faltas].present?}"
+        %>
+        <% if f.object.errors[:faltas].present? %>
+          <div class="error-icon">
+            <%= inline_svg 'Error.svg', alt: "Error Icon" %>
+          </div>
+          <div class="error-message"><%= f.object.errors[:faltas].join(", ") %></div>
+        <% end %>
       </div>
+
     </div>
+    <%= f.button :submit, "Cadastrar", class: "submit" %>
   </div>
+  
   <div class="main-form-container">
-    <h1>Conteúdo Programático</h1>
+    <h1>Conteúdo</h1>
     <div id="topicos_fields" class="container-form-fields">
         <%= f.fields_for :topicos do |topico_form| %>
           <div class="field-with-icon nested-fields">
@@ -53,5 +93,6 @@
       <p>Nenhuma avaliação está associada com essa disciplina.</p>
     <% end %>
     </div>
+    <%= f.button :submit, "Cadastrar", class: "submit" %>
   </div>
 <% end %>

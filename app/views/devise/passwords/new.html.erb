@@ -8,8 +8,15 @@
       <div class="field-with-icon">
         <%= inline_svg 'Email.svg', alt: "E-mail Icon", class: "custom-input-icon" %>
         <%= text_field_tag "#{resource_name}[email]", nil, 
-          required: true, autofocus: true, autocomplete: "email", 
-          placeholder: "E-mail", class: "custom-input" %>
+          required: true, autofocus: true, autocomplete: "email", placeholder: "E-mail", 
+          class: "custom-input #{'input-with-error' if resource.errors[:email].present?}" 
+        %>
+        <% if resource.errors[:email].present? %>
+        <div class="error-icon">
+          <%= inline_svg 'Error.svg', alt: "Error Icon" %>
+        </div>
+        <div class="error-message"><%= resource.errors[:email].join(", ") %></div>
+      <% end %>
       </div>
       <%= f.button :submit, t(".send_me_reset_password_instructions"), class: "submit" %>
     </div>

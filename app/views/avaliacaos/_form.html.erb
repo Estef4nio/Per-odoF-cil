@@ -4,53 +4,79 @@
   <%= simple_form_for(@avaliacao, html: {class: "main-form-container"}) do |f| %>
     <h1>Avaliação</h1>
     <div class="container-form-fields">
+
       <div class="field-with-icon">
         <%= inline_svg 'Book.svg', alt: "Book Icon", class: "custom-input-icon" %>
-        <%= f.text_field :nome, required: true, autofocus: true, autocomplete: "nome_avaliacao", placeholder: "Nome da Avaliação", class: "custom-input" %>
+        <%= f.text_field :nome, required: true, autofocus: true, autocomplete: "nome_avaliacao", placeholder: "Nome da Avaliação", 
+          class: "custom-input #{'input-with-error' if f.object.errors[:nome].present?}"
+        %>
+        <% if f.object.errors[:nome].present? %>
+          <div class="error-icon">
+            <%= inline_svg 'Error.svg', alt: "Error Icon" %>
+          </div>
+          <div class="error-message"><%= f.object.errors[:nome].join(", ") %></div>
+        <% end %>
       </div>
+      
       <div class="field-with-icon">
         <%= inline_svg 'Award.svg', alt: "Award Icon", class: "custom-input-icon" %>
-        <%= f.number_field :nota, required: true, autofocus: true, autocomplete: "nota_avaliacao", placeholder: "Nota", class: "custom-input" %>
+        <%= f.number_field :nota, required: true, autofocus: true, autocomplete: "nota_avaliacao", placeholder: "Nota", 
+          class: "custom-input #{'input-with-error' if f.object.errors[:nota].present?}"
+        %>
+        <% if f.object.errors[:nota].present? %>
+          <div class="error-icon">
+            <%= inline_svg 'Error.svg', alt: "Error Icon" %>
+          </div>
+          <div class="error-message"><%= f.object.errors[:nota].join(", ") %></div>
+        <% end %>
       </div>
+
       <div class="field-with-icon">
         <%= inline_svg 'Award.svg', alt: "Award Icon", class: "custom-input-icon" %>
-        <%= f.number_field :peso, required: true, autofocus: true, autocomplete: "peso_avaliacao", placeholder: "Peso", class: "custom-input" %>
+        <%= f.number_field :peso, required: true, autofocus: true, autocomplete: "peso_avaliacao", placeholder: "Peso", 
+          class: "custom-input #{'input-with-error' if f.object.errors[:peso].present?}"
+        %>
+        <% if f.object.errors[:peso].present? %>
+          <div class="error-icon">
+            <%= inline_svg 'Error.svg', alt: "Error Icon" %>
+          </div>
+          <div class="error-message"><%= f.object.errors[:peso].join(", ") %></div>
+        <% end %>
       </div>
+
       <div class="field-with-icon">
         <%= inline_svg 'Calendar.svg', alt: "Calendar Icon", class: "custom-input-icon" %>
-        <%= f.datetime_field :data, required: true, autofocus: true, autocomplete: "data", placeholder: "Data", class: "custom-input" %>
+        <%= f.datetime_field :data, required: true, autofocus: true, autocomplete: "data", placeholder: "Data", 
+          class: "custom-input #{'input-with-error' if f.object.errors[:data].present?}"
+        %>
+        <% if f.object.errors[:data].present? %>
+         <div class="error-icon">
+           <%= inline_svg 'Error.svg', alt: "Error Icon" %>
+         </div>
+         <div class="error-message"><%= f.object.errors[:data].join(", ") %></div>
+       <% end %>
       </div>
+
       <div class="field-with-icon">
-        <%= f.text_area :descricao, required: true, autofocus: true, autocomplete: "descricao", placeholder: "Descrição", class: "" %>
+        <%= f.text_area :descricao, autofocus: true, autocomplete: "descricao", placeholder: "Descrição", class: "" %>
       </div>
+
       <div class="field-with-icon">
         <%= inline_svg 'Book.svg', alt: "Book Icon", class: "custom-input-icon" %>
-        <%= f.collection_select :disciplina_id, Disciplina.all, :id, :nome, prompt: "Disciplina"%>
+        <%= f.collection_select :disciplina_id, @disciplinas, :id, :nome, {prompt: "Disciplina"},
+          {class: "custom-input #{'input-with-error' if f.object.errors[:disciplina_id].present?}"}
+        %>
         <%= inline_svg 'ArrowDropDown.svg', alt: "Dropdown Arrow Icon", class: "dropdown-input-icon" %>
+      
+        <% if f.object.errors[:disciplina_id].present? %>
+          <div class="error-icon">
+            <%= inline_svg 'Error.svg', alt: "Error Icon" %>
+          </div>
+          <div class="error-message"><%= f.object.errors[:disciplina_id].join(", ") %></div>
+        <% end %>
       </div> 
-      <%= f.button :submit, "Cadastrar", class: "submit" %>
+
     </div>
+    <%= f.button :submit, "Cadastrar", class: "submit" %>
   <% end %>
 </div>
-
-<!-- <%= simple_form_for(@avaliacao) do |f| %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-
-  <div class="form-inputs">
-    <%= f.input :nome %>
-    <%= f.input :descricao %>
-    <%= f.input :nota %>
-    <%= f.input :peso %>
-    <%= f.input :data %>
-
-    <div class="field">
-      <%= f.label :disciplina_id %>
-      <%= f.collection_select :disciplina_id, Disciplina.all, :id, :nome, prompt: true %>
-    </div> 
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
-<% end %> -->

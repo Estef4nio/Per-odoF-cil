@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   attr_writer :login
 
-  belongs_to :periodo
+  has_one :periodo, dependent: :destroy
 
   validates :username, presence: true, uniqueness: { case_sensitive: false }
   validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
@@ -29,5 +29,13 @@ class User < ApplicationRecord
     if User.where(email: username).exists?
       errors.add(:username, :invalid)
     end
+  end
+
+  after_create :create_default_periodo
+
+  private
+
+  def create_default_periodo
+    Periodo.create!(nome: "2024/1", user: self)
   end
 end

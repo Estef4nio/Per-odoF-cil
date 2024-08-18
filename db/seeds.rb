@@ -9,24 +9,19 @@
 #   end
 # db/seeds.rb
 
-# Encontre ou crie um período relacionado ao usuário, se necessário
-periodo = Periodo.find_or_create_by!(nome: "2024/1")
-
 # Crie um usuário com os atributos fornecidos
 User.create!(
   email: 'tang@gmail.com',
   username: 'tang',
-  curso: 'Computação',
+  curso: 'Ciência da Computação',
   password: '123456',
-  password_confirmation: '123456',
-  periodo_id: periodo.id
+  password_confirmation: '123456'
 )
 
 User.create!(
   email: 'ausberto@gmail.com',
-  username: 'Asberto Castro',
+  username: 'bebeto',
   curso: 'Matemática',
   password: '123456',
-  password_confirmation: '123456',
-  periodo_id: periodo.id
+  password_confirmation: '123456'
 )

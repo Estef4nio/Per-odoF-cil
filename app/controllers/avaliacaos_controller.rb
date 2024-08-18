@@ -5,7 +5,7 @@ class AvaliacaosController < ApplicationController
 
   def new
     @avaliacao = Avaliacao.new
-    @disciplinas = Disciplina.all
+    @disciplinas = current_user.periodo.disciplinas
     respond_with(@avaliacao)
   end
 
@@ -13,12 +13,14 @@ class AvaliacaosController < ApplicationController
   end
 
   def create
+    @disciplinas = current_user.periodo.disciplinas
     @avaliacao = Avaliacao.new(avaliacao_params)
     @avaliacao.save
     respond_with(@avaliacao, location: root_path)
   end
 
   def update
+    @disciplinas = current_user.periodo.disciplinas
     @avaliacao.update(avaliacao_params)
     respond_with(@avaliacao, location: root_path)
   end
